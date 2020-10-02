@@ -55,7 +55,6 @@ function App() {
 
   return (
     <div className="app">
-        
       <div className="counter">
         <div className="result">{store.getState().count}</div>
         <div className="btns">
