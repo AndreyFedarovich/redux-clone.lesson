@@ -39,19 +39,10 @@ function App() {
 
   const forceUpdate = useForceUpdate();
   store.subscribe(() => forceUpdate());
-  const increment = () => {
-    store.dispatch(incrementAction(amount || 1));
-  }
-  const decrement = () => {
-      store.dispatch(decrementAction(amount || 1));
-  }
-  const reset = () => {
-    store.dispatch(resetAction());
-  }
-
-  const handleChange = (e) => {
-    setAmount(parseInt(e.target.value));
-  }
+  const increment = () => store.dispatch(incrementAction(amount || 1));
+  const decrement = () => store.dispatch(decrementAction(amount || 1));
+  const reset = () => store.dispatch(resetAction());
+  const handleChange = (e) => setAmount(parseInt(e.target.value));
 
   return (
     <div className="app">
@@ -62,7 +53,12 @@ function App() {
           <button onClick={()=> reset()} className="btn">R</button>
           <button onClick={()=> decrement()} className="btn">-</button>
         </div>
-        <input className="input" type="text" onChange={handleChange} value={amount} />
+        <input
+          className="input"
+          type="text"
+          onChange={handleChange}
+          value={amount ? amount : ''}
+        />
       </div>
     </div>
   );
